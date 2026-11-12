@@ -4,292 +4,758 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AI Tools Hub | ԱԲ գործիքների հարթակ</title>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Armenian:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<title>AI Tools Hub</title>
+
+<link rel="icon" href="https://cdn-icons-png.flaticon.com/512/4712/4712027.png">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
 <style>
-:root{
-  --bg:#090d1d;
-  --panel:#141d34;
-  --line:rgba(180,190,255,.15);
-  --text:#f5f6ff;
-  --muted:#9daac8;
-  --purple:#8c75ff;
-  --cyan:#53d8e8;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
-*{box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{
- margin:0;
- background:radial-gradient(ellipse at 10% 0%,#5541a833,transparent 35%),var(--bg);
- color:var(--text);
- font-family:'Noto Sans Armenian',sans-serif;
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    background: linear-gradient(135deg, #eaf5ff, #dceeff, #f5faff, #d7eaff);
+    background-attachment: fixed;
+    color: #18345b;
+    min-height: 100vh;
+    overflow-x: hidden;
 }
-a{text-decoration:none;color:inherit}
-.container{width:min(1150px,92%);margin:auto}
-header{
- position:sticky;top:0;z-index:10;
- background:#090d1deF;
- backdrop-filter:blur(18px);
- border-bottom:1px solid var(--line);
+
+::-webkit-scrollbar {
+    width: 9px;
 }
-nav{
- height:75px;display:flex;
- align-items:center;justify-content:space-between;
- gap:15px;
+
+::-webkit-scrollbar-thumb {
+    background: #72b7f4;
+    border-radius: 20px;
 }
-.logo{display:flex;align-items:center;gap:12px;font-weight:800}
-.logo-icon{
- width:43px;height:43px;border-radius:14px;
- display:grid;place-items:center;
- background:linear-gradient(135deg,var(--purple),var(--cyan));
- font-size:24px;
+
+::-webkit-scrollbar-track {
+    background: #e5f1fc;
 }
-.logo small{display:block;color:var(--muted);font-size:10px}
-.navlinks{display:flex;gap:25px;color:var(--muted);font-size:13px}
-.navlinks a:hover{color:white}
-.btn{
- padding:11px 17px;border:1px solid var(--line);
- border-radius:12px;background:#ffffff0a;
- color:white;cursor:pointer;font:inherit;font-size:12px;
+
+header {
+    padding: 38px 20px 25px;
 }
-.primary{background:linear-gradient(110deg,#8069f8,#45bfd6);border:0}
-.hero{text-align:center;padding:85px 0 45px}
-.eyebrow{
- display:inline-block;padding:9px 15px;
- border:1px solid #8c75ff55;border-radius:30px;
- color:#c8bdff;background:#8c75ff15;font-size:12px;
+
+.header-box {
+    max-width: 1150px;
+    margin: auto;
+    padding: 42px 35px;
+    border-radius: 30px;
+    background: linear-gradient(135deg, #ffffff, #e6f3ff);
+    border: 2px solid #a9d5fa;
+    box-shadow: 0 12px 35px rgba(54, 119, 180, 0.15);
+    position: relative;
+    overflow: hidden;
 }
-h1{font-size:clamp(36px,6vw,65px);line-height:1.15;margin:25px 0 15px}
-h1 span{
- background:linear-gradient(90deg,#b6a8ff,#5cdeeb);
- -webkit-background-clip:text;color:transparent;
+
+.header-box::before {
+    content: "";
+    position: absolute;
+    width: 250px;
+    height: 250px;
+    border-radius: 50%;
+    background: rgba(119, 190, 246, 0.13);
+    top: -130px;
+    left: -80px;
 }
-.hero p{color:var(--muted);max-width:650px;margin:0 auto;line-height:1.9}
-.search{
- display:flex;max-width:650px;margin:30px auto;
- padding:8px 10px 8px 18px;
- background:var(--panel);border:1px solid var(--line);
- border-radius:15px;gap:10px;
+
+.top-left-text {
+    position: absolute;
+    top: 22px;
+    left: 25px;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 1.3px;
+    color: #367fbd;
+    z-index: 2;
 }
-.search input{
- flex:1;min-width:0;background:none;border:0;
- outline:0;color:white;font:inherit;
+
+.top-tools {
+    position: absolute;
+    top: 17px;
+    right: 18px;
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    z-index: 3;
 }
-.search button{border:0;border-radius:10px;padding:10px 15px}
-.stats{display:flex;justify-content:center;gap:40px;color:var(--muted);font-size:12px}
-.stats strong{display:block;color:white;font-size:19px}
-.section{padding:35px 0}
-.section h2{font-size:25px}
-.section-desc{color:var(--muted);font-size:13px}
-.categories{display:flex;flex-wrap:wrap;gap:10px;margin:25px 0}
-.chip{
- padding:10px 15px;border:1px solid var(--line);
- background:#ffffff08;color:var(--muted);
- border-radius:30px;cursor:pointer;font:inherit;font-size:12px;
+
+.top-tools button {
+    padding: 10px 16px;
+    border: 1px solid #8cc5f3;
+    border-radius: 12px;
+    background: linear-gradient(135deg, #4c9fe5, #287dc5);
+    color: white;
+    font-size: 12px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: 0.3s;
+    box-shadow: 0 5px 13px rgba(45, 125, 195, 0.18);
 }
-.chip.active,.chip:hover{background:#8c75ff30;color:white;border-color:var(--purple)}
-.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:17px}
-.card{
- background:linear-gradient(145deg,#19233d,#10182b);
- border:1px solid var(--line);border-radius:20px;
- padding:21px;transition:.25s;
- display:flex;flex-direction:column;min-height:185px;
+
+.top-tools button:hover {
+    transform: translateY(-3px);
+    background: linear-gradient(135deg, #287dc5, #1768ad);
+    box-shadow: 0 8px 18px rgba(45, 125, 195, 0.28);
 }
-.card:hover{transform:translateY(-5px);border-color:#927dff;box-shadow:0 15px 35px #0005}
-.card-icon{
- width:45px;height:45px;border-radius:14px;
- background:#8c75ff20;display:grid;place-items:center;font-size:24px;
+
+header h1 {
+    font-size: 54px;
+    font-weight: 800;
+    text-align: center;
+    margin: 25px 0 16px;
+    color: #236da9;
+    text-shadow: 0 3px 12px rgba(63, 142, 207, 0.15);
+    letter-spacing: 2px;
+    position: relative;
 }
-.card h3{margin:15px 0 7px;font-size:17px}
-.card p{color:var(--muted);font-size:12px;line-height:1.7;margin:0 0 15px}
-.card-footer{margin-top:auto;display:flex;justify-content:space-between;align-items:center}
-.tag{font-size:10px;color:#b9adff}
-.open{font-size:12px;color:#a99aff;font-weight:700}
-.empty{grid-column:1/-1;text-align:center;padding:35px;color:var(--muted)}
-.cta{
- margin:60px 0;padding:30px;border-radius:22px;
- border:1px solid #8c75ff55;
- background:linear-gradient(110deg,#8069f825,#53d8e815);
+
+header p {
+    text-align: center;
+    font-size: 16px;
+    line-height: 1.9;
+    color: #52799d;
+    max-width: 820px;
+    margin: auto;
+    position: relative;
 }
-.cta h2{margin-top:0}
-.cta p{color:var(--muted);font-size:13px}
-footer{border-top:1px solid var(--line);padding:27px 0;color:var(--muted);font-size:12px;text-align:center}
-@media(max-width:850px){
- .grid{grid-template-columns:repeat(2,1fr)}
- .navlinks{display:none}
+
+.search-container {
+    display: flex;
+    justify-content: center;
+    margin: 22px 20px 35px;
 }
-@media(max-width:550px){
- .grid{grid-template-columns:1fr}
- .hero{padding-top:55px}
- .stats{gap:20px}
- nav{height:65px}
- .search{padding-left:12px}
- .search button{padding:9px}
+
+#searchBox {
+    width: 390px;
+    max-width: 100%;
+    padding: 15px 20px;
+    border: 2px solid #a5d2f4;
+    border-radius: 16px;
+    background: #ffffff;
+    color: #244a70;
+    outline: none;
+    font-size: 14px;
+    font-family: inherit;
+    transition: 0.3s;
+    box-shadow: 0 5px 18px rgba(54, 119, 180, 0.10);
+}
+
+#searchBox::placeholder {
+    color: #83a7c7;
+}
+
+#searchBox:focus {
+    border-color: #4599dc;
+    box-shadow: 0 0 20px rgba(69, 153, 220, 0.20);
+    transform: scale(1.02);
+}
+
+section {
+    width: 94%;
+    max-width: 1450px;
+    margin: auto;
+    padding-bottom: 40px;
+}
+
+.category {
+    margin-bottom: 35px;
+    padding: 28px;
+    border-radius: 27px;
+    background: rgba(255, 255, 255, 0.86);
+    border: 1.5px solid #b8dafa;
+    box-shadow: 0 9px 25px rgba(54, 119, 180, 0.10);
+    position: relative;
+    overflow: hidden;
+}
+
+.category h2 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: fit-content;
+    max-width: 100%;
+    margin: auto auto 27px auto;
+    padding: 13px 27px;
+    font-size: 21px;
+    font-weight: 700;
+    border-radius: 16px;
+    background: linear-gradient(135deg, #69b4ee, #3e91d2);
+    color: white;
+    border: 1px solid #a4d5fa;
+    box-shadow: 0 5px 14px rgba(62, 145, 210, 0.18);
+    letter-spacing: 0.3px;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 20px;
+}
+
+.card {
+    padding: 23px 19px;
+    border-radius: 21px;
+    background: linear-gradient(145deg, #ffffff, #edf7ff);
+    border: 1.5px solid #c1def5;
+    transition: 0.3s ease;
+    box-shadow: 0 5px 15px rgba(54, 119, 180, 0.08);
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.card:hover {
+    transform: translateY(-7px);
+    box-shadow: 0 12px 25px rgba(54, 119, 180, 0.17);
+    border-color: #72b7ec;
+    background: #ffffff;
+}
+
+.icon {
+    font-size: 42px;
+    margin-bottom: 13px;
+    transition: 0.3s;
+}
+
+.card:hover .icon {
+    transform: scale(1.12);
+}
+
+.card h3 {
+    font-size: 17px;
+    font-weight: 700;
+    margin-bottom: 10px;
+    color: #245c8c;
+}
+
+.card p {
+    font-size: 12px;
+    line-height: 1.8;
+    color: #63829f;
+    min-height: 48px;
+}
+
+.card button {
+    margin-top: 14px;
+    width: 100%;
+    padding: 11px 14px;
+    border: 1px solid #9cccf1;
+    border-radius: 12px;
+    font-size: 12px;
+    font-weight: 700;
+    font-family: inherit;
+    cursor: pointer;
+    color: white;
+    background: linear-gradient(135deg, #55a7e7, #347fbd);
+    box-shadow: 0 4px 12px rgba(52, 127, 189, 0.16);
+    transition: 0.3s ease;
+}
+
+.card button:hover {
+    transform: scale(1.04);
+    background: linear-gradient(135deg, #347fbd, #236ba8);
+}
+
+.no-results {
+    display: none;
+    text-align: center;
+    padding: 25px;
+    color: #63829f;
+    font-size: 15px;
+}
+
+footer {
+    margin-top: 35px;
+    padding: 27px 20px;
+    text-align: center;
+    background: #e2f1ff;
+    border-top: 2px solid #a9d5fa;
+    font-size: 13px;
+    color: #47769f;
+    box-shadow: 0 -5px 20px rgba(54, 119, 180, 0.07);
+}
+
+@media(max-width: 768px) {
+    header {
+        padding: 20px 12px;
+    }
+
+    .header-box {
+        padding: 35px 18px 25px;
+    }
+
+    .top-left-text {
+        position: static;
+        text-align: center;
+        margin-bottom: 15px;
+        font-size: 10px;
+    }
+
+    .top-tools {
+        position: static;
+        justify-content: center;
+        margin-bottom: 18px;
+    }
+
+    header h1 {
+        font-size: 34px;
+        margin: 15px 0;
+    }
+
+    header p {
+        font-size: 14px;
+    }
+
+    .category {
+        padding: 18px 13px;
+        border-radius: 20px;
+    }
+
+    .category h2 {
+        font-size: 16px;
+        padding: 12px 17px;
+        text-align: center;
+    }
+
+    .grid {
+        grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+        gap: 12px;
+    }
+
+    .card {
+        padding: 18px 12px;
+    }
+
+    .card h3 {
+        font-size: 15px;
+    }
+
+    .card p {
+        font-size: 11px;
+    }
+}
+
+@media(max-width: 380px) {
+    .grid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    header h1 {
+        font-size: 29px;
+    }
 }
 </style>
 </head>
+
 <body>
 
 <header>
- <nav class="container">
-  <a class="logo" href="#">
-   <span class="logo-icon">✦</span>
-   <span>AI TOOLS HUB<small>DISCOVER • CREATE • LEARN</small></span>
-  </a>
-  <div class="navlinks">
-   <a href="#tools">Գործիքներ</a>
-   <a href="#categories">Բաժիններ</a>
-   <a href="#about">Մեր մասին</a>
-  </div>
-  <button class="btn primary" onclick="makeQR()">▦ QR Կոդ</button>
- </nav>
+    <div class="header-box">
+
+        <div class="top-left-text">
+            ԲԱՑԱՀԱՅՏԻ՛Ր • ՍՏԵՂԾԻ՛Ր • ՍՈՎՈՐԻ՛Ր
+        </div>
+
+        <div class="top-tools">
+            <button onclick="openTool('https://dproc2.github.io/ai-study-assistant/')">
+                🧠 ԱԲ Օնլայն
+            </button>
+
+            <button onclick="openTool('https://school-armavir.github.io/qr-code-generator/')">
+                📱 QR Կոդ
+            </button>
+        </div>
+
+        <h1>🤖 AI TOOLS HUB</h1>
+
+        <p>
+            Արհեստական բանականության ամենահզոր գործիքները մեկ հարթակում։
+        </p>
+
+    </div>
 </header>
 
-<main>
-<section class="hero container">
- <div class="eyebrow">✦ Արհեստական բանականության աշխարհը՝ մեկ տեղում</div>
- <h1>Գաղափարից մինչև արդյունք՝<br><span>AI-ի օգնությամբ</span></h1>
- <p>
- Բացահայտիր ժամանակակից արհեստական բանականության գործիքները,
- ընտրիր քեզ անհրաժեշտը և ստեղծիր ավելին՝ ավելի արագ ու ստեղծագործաբար։
- </p>
- <div class="search">
-  <input id="search" type="search" placeholder="Փնտրիր գործիք կամ բաժին...">
-  <button class="btn primary" onclick="clearSearch()">Մաքրել</button>
- </div>
- <div class="stats">
-  <div><strong id="count">35+</strong>Գործիքներ</div>
-  <div><strong>7</strong>Ուղղություններ</div>
-  <div><strong>24/7</strong>Հասանելիություն</div>
- </div>
-</section>
+<div class="search-container">
+    <input
+        type="text"
+        id="searchBox"
+        placeholder="🔍 Փնտրիր AI գործիք..."
+        oninput="filterTools()"
+    >
+</div>
 
-<section class="section container" id="tools">
- <h2>Բացահայտիր գործիքները</h2>
- <p class="section-desc">Ընտրիր ուղղությունը և գտիր քեզ համապատասխան ԱԲ գործիքը։</p>
- <div class="categories" id="categories"></div>
- <div class="grid" id="grid"></div>
-</section>
+<section>
 
-<section class="container" id="about">
- <div class="cta">
-  <h2>Սովորի՛ր, փորձարկի՛ր, ստեղծի՛ր</h2>
-  <p>Օգտագործիր արհեստական բանականությունը որպես ստեղծագործական օգնական։</p>
-  <a href="#tools" class="btn primary">Դիտել գործիքները ↗</a>
- </div>
+<!-- AI ՕԳՆԱԿԱՆՆԵՐ -->
+
+<div class="category">
+<h2>💬 AI Օգնականներ</h2>
+<div class="grid">
+
+<div class="card">
+<div class="icon">🧠</div>
+<h3>ChatGPT</h3>
+<p>Խելացի պատասխաններ և ծրագրավորում։</p>
+<button onclick="openTool('https://chatgpt.com')">Բացել</button>
+</div>
+
+<div class="card">
+<div class="icon">✨</div>
+<h3>Gemini</h3>
+<p>Google-ի AI օգնական։</p>
+<button onclick="openTool('https://gemini.google.com')">Բացել</button>
+</div>
+
+<div class="card">
+<div class="icon">📘</div>
+<h3>Claude</h3>
+<p>Anthropic-ի խելացի AI օգնական։</p>
+<button onclick="openTool('https://claude.ai')">Բացել</button>
+</div>
+
+<div class="card">
+<div class="icon">⚡</div>
+<h3>Grok</h3>
+<p>X AI-ի արագ և հզոր օգնական։</p>
+<button onclick="openTool('https://grok.com')">Բացել</button>
+</div>
+
+<div class="card">
+<div class="icon">🔎</div>
+<h3>Perplexity</h3>
+<p>AI որոնողական համակարգ։</p>
+<button onclick="openTool('https://www.perplexity.ai')">Բացել</button>
+</div>
+
+<div class="card">
+<div class="icon">📝</div>
+<h3>Notion AI</h3>
+<p>Նշումներ և AI գրառում։</p>
+<button onclick="openTool('https://www.notion.so/product/ai')">Բացել</button>
+</div>
+
+<div class="card">
+<div class="icon">✍️</div>
+<h3>Writesonic</h3>
+<p>AI հոդվածներ և տեքստեր։</p>
+<button onclick="openTool('https://writesonic.com')">Բացել</button>
+</div>
+
+<div class="card">
+<div class="icon">📢</div>
+<h3>Jasper AI</h3>
+<p>Մարքեթինգ և գովազդային տեքստեր։</p>
+<button onclick="openTool('https://www.jasper.ai')">Բացել</button>
+</div>
+
+</div>
+</div>
+
+<!-- AI ՍԱՀԻԿԱՇԱՐ -->
+
+<div class="category">
+<h2>📊 AI Սահիկաշար</h2>
+<div class="grid">
+
+<div class="card">
+<div class="icon">📚</div>
+<h3>Gamma AI</h3>
+<p>ԱԲ պրեզենտացիաներ։</p>
+<button onclick="openTool('https://gamma.app')">Բացել</button>
+</div>
+
+<div class="card">
+<div class="icon">🖥️</div>
+<h3>Tome AI</h3>
+<p>AI սլայդներ և ներկայացումներ։</p>
+<button onclick="openTool('https://tome.app')">Բացել</button>
+</div>
+
+<div class="card">
+<div class="icon">🎨</div>
+<h3>Canva AI</h3>
+<p>Գեղեցիկ սլայդների ստեղծում։</p>
+<button onclick="openTool('https://www.canva.com')">Բացել</button>
+</div>
+
+</div>
+</div>
+
+<!-- AI ՎԻԴԵՈ -->
+
+<div class="category">
+<h2>🎬 AI Վիդեո և Անիմացիա</h2>
+<div class="grid">
+
+<div class="card">
+<div class="icon">🎥</div>
+<h3>Sora</h3>
+<p>Ռեալիստիկ AI վիդեոներ։</p>
+<button onclick="openTool('https://openai.com/sora')">Բացել</button>
+</div>
+
+<div class="card">
+<div class="icon">📹</div>
+<h3>Runway ML</h3>
+<p>AI վիդեո գեներացիա։</p>
+<button onclick="openTool('https://runwayml.com')">Բացել</button>
+</div>
+
+<div class="card">
+<div class="icon">⚡</div>
+<h3>Pika Labs</h3>
+<p>AI անիմացիաներ։</p>
+<button onclick="openTool('https://pika.art')">Բացել</button>
+</div>
+
+<div class="card">
+<div class="icon">🎞️</div>
+<h3>Veo 3</h3>
+<p>Google-ի AI վիդեո համակարգ։</p>
+<button onclick="openTool('https://deepmind.google/technologies/veo/')">Բացել</button>
+</div>
+
+<div class="card">
+<div class="icon">🎬</div>
+<h3>Kling AI</h3>
+<p>AI cinematic վիդեոներ։</p>
+<button onclick="openTool('https://klingai.com')">Բացել</button>
+</div>
+
+<div class="card">
+<div class="icon">✂️</div>
+<h3>OpusClip</h3>
+<p>AI video cutter և shorts։</p>
+<button onclick="openTool('https://www.opus.pro')">Բացել</button>
+</div>
+
+<div class="card">
+<div class="icon">🎤</div>
+<h3>Riverside</h3>
+<p>AI podcast և video tools։</p>
+<button onclick="openTool('https://riverside.fm')">Բացել</button>
+</div>
+
+</div>
+</div>
+
+<!-- AI ՆԿԱՐՆԵՐ -->
+
+<div class="category">
+<h2>🎨 AI Նկարներ</h2>
+<div class="grid">
+
+<div class="card">
+<div class="icon">🖼️</div>
+<h3>DALL·E</h3>
+<p>Տեքստից նկարների ստեղծում։</p>
+<button onclick="openTool('https://www.bing.com/images/create')">Բացել</button>
+</div>
+
+<div class="card">
+<div class="icon">🌠</div>
+<h3>Midjourney</h3>
+<p>Պրոֆեսիոնալ AI արվեստ։</p>
+<button onclick="openTool('https://www.midjourney.com')">Բացել</button>
+</div>
+
+<div class="card">
+<div class="icon">🎭</div>
+<h3>Leonardo AI</h3>
+<p>Դիզայն և AI պատկերներ։</p>
+<button onclick="openTool('https://leonardo.ai')">Բացել</button>
+</div>
+
+<div class="card">
+<div class="icon">🖌️</div>
+<h3>Stable Diffusion</h3>
+<p>Անվճար AI պատկերներ։</p>
+<button onclick="openTool('https://stability.ai')">Բացել</button>
+</div>
+
+<div class="card">
+<div class="icon">🍌</div>
+<h3>Nano Banana</h3>
+<p>AI creative image tool։</p>
+<button onclick="openTool('https://nanobanana.ai')">Բացել</button>
+</div>
+
+</div>
+</div>
+
+<!-- ՁԱՅՆ ԵՎ ԽՈՍՔ -->
+
+<div class="category">
+<h2>🎤 Ձայն և Խոսք</h2>
+<div class="grid">
+
+<div class="card">
+<div class="icon">🗣️</div>
+<h3>ElevenLabs</h3>
+<p>Շատ ռեալիստիկ AI ձայներ։</p>
+<button onclick="openTool('https://elevenlabs.io')">Բացել</button>
+</div>
+
+<div class="card">
+<div class="icon">🎧</div>
+<h3>PlayHT</h3>
+<p>Podcast և voice AI։</p>
+<button onclick="openTool('https://play.ht')">Բացել</button>
+</div>
+
+<div class="card">
+<div class="icon">📣</div>
+<h3>LOVO AI</h3>
+<p>Մարքեթինգ և գովազդային ձայներ։</p>
+<button onclick="openTool('https://lovo.ai')">Բացել</button>
+</div>
+
+<div class="card">
+<div class="icon">🎼</div>
+<h3>Suno AI</h3>
+<p>AI երաժշտություն և երգեր։</p>
+<button onclick="openTool('https://suno.com')">Բացել</button>
+</div>
+
+<div class="card">
+<div class="icon">🎹</div>
+<h3>AIVA</h3>
+<p>Խաղերի երաժշտություն։</p>
+<button onclick="openTool('https://www.aiva.ai')">Բացել</button>
+</div>
+
+</div>
+</div>
+
+<!-- ԽԱՂԵՐԻ AI -->
+
+<div class="category">
+<h2>🎮 Խաղերի AI</h2>
+<div class="grid">
+
+<div class="card">
+<div class="icon">💻</div>
+<h3>GitHub Copilot</h3>
+<p>AI կոդ գրող օգնական։</p>
+<button onclick="openTool('https://github.com/features/copilot')">Բացել</button>
+</div>
+
+<div class="card">
+<div class="icon">⚙️</div>
+<h3>Codeium</h3>
+<p>Անվճար AI coding tool։</p>
+<button onclick="openTool('https://codeium.com')">Բացել</button>
+</div>
+
+<div class="card">
+<div class="icon">🎮</div>
+<h3>Unity</h3>
+<p>Խաղերի ստեղծման շարժիչ։</p>
+<button onclick="openTool('https://unity.com')">Բացել</button>
+</div>
+
+<div class="card">
+<div class="icon">🕹️</div>
+<h3>Unreal Engine</h3>
+<p>Հզոր խաղային գրաֆիկա։</p>
+<button onclick="openTool('https://www.unrealengine.com')">Բացել</button>
+</div>
+
+<div class="card">
+<div class="icon">🤖</div>
+<h3>Unity ML-Agents</h3>
+<p>Խելացի NPC համակարգ։</p>
+<button onclick="openTool('https://unity.com/products/machine-learning-agents')">Բացել</button>
+</div>
+
+</div>
+</div>
+
+<!-- ԲԺՇԿԱԿԱՆ AI -->
+
+<div class="category">
+<h2>🏥 Բժշկական AI</h2>
+<div class="grid">
+
+<div class="card">
+<div class="icon">🧬</div>
+<h3>IBM Watson Health</h3>
+<p>Օգնում է ախտորոշման մեջ։</p>
+<button onclick="openTool('https://www.ibm.com/watson-health')">Բացել</button>
+</div>
+
+<div class="card">
+<div class="icon">🩺</div>
+<h3>DeepMind Health</h3>
+<p>Բժշկական տվյալների վերլուծություն։</p>
+<button onclick="openTool('https://deepmind.google')">Բացել</button>
+</div>
+
+<div class="card">
+<div class="icon">🏥</div>
+<h3>Da Vinci Surgical</h3>
+<p>Ռոբոտացված վիրաբուժություն։</p>
+<button onclick="openTool('https://www.intuitive.com')">Բացել</button>
+</div>
+
+</div>
+</div>
+
+<div class="no-results" id="noResults">
+Այս որոնմամբ գործիք չի գտնվել։
+</div>
+
 </section>
-</main>
 
 <footer>
- <div class="container">
-  <strong>AI TOOLS HUB</strong> · ԱԲ գործիքների հարթակ
-  <br><br>
-  Նախագծային աշխատանք · Վարդան Բախշյանի անվան թիվ 2 հիմնական դպրոց
- </div>
+    © Նախագծային աշխատանք ✨ Վ․ Բախշյանի անվան №2 հ/դ
 </footer>
 
 <script>
-const groups=[
-"Բոլորը","AI Օգնականներ","AI Սահիկաշար","AI Վիդեո",
-"AI Նկարներ","Ձայն և խոսք","Խաղերի AI","Բժշկական AI"
-];
-
-const tools=[
-["ChatGPT","Խելացի պատասխաններ, գաղափարներ և ծրագրավորման օգնություն։","🧠","AI Օգնականներ","https://chatgpt.com/"],
-["Gemini","Google-ի արհեստական բանականության օգնական։","✨","AI Օգնականներ","https://gemini.google.com/"],
-["Claude","Տեքստերի վերլուծություն և գրավոր աշխատանք։","📘","AI Օգնականներ","https://claude.ai/"],
-["Grok","Հարցերի ուսումնասիրություն և գաղափարներ։","⚡","AI Օգնականներ","https://grok.com/"],
-["Perplexity","ԱԲ որոնում՝ աղբյուրներով և պատասխաններով։","🔎","AI Օգնականներ","https://www.perplexity.ai/"],
-["Notion AI","Նշումներ և աշխատանքների կազմակերպում։","📝","AI Օգնականներ","https://www.notion.so/product/ai"],
-["Writesonic","Տեքստերի և բովանդակության ստեղծում։","✍️","AI Օգնականներ","https://writesonic.com/"],
-["Jasper AI","Մարքեթինգային տեքստերի ստեղծում։","📢","AI Օգնականներ","https://www.jasper.ai/"],
-
-["Gamma AI","Ներկայացումների արագ ձևավորում։","📚","AI Սահիկաշար","https://gamma.app/"],
-["Tome","Պատմողական ներկայացումների ստեղծում։","🖥️","AI Սահիկաշար","https://tome.app/"],
-["Canva AI","Դիզայն և սահիկաշարեր։","🎨","AI Սահիկաշար","https://www.canva.com/"],
-
-["Sora","Տեքստից տեսանյութերի ստեղծում։","🎥","AI Վիդեո","https://sora.com/"],
-["Runway","ԱԲ վիդեո ստեղծում և խմբագրում։","📹","AI Վիդեո","https://runwayml.com/"],
-["Pika","Կարճ տեսանյութերի և անիմացիաների ստեղծում։","⚡","AI Վիդեո","https://pika.art/"],
-["Veo","Google-ի տեսանյութերի գեներացման մոդել։","🎞️","AI Վիդեո","https://deepmind.google/models/veo/"],
-["Kling AI","Տեսանյութերի ստեղծում՝ նկարագրությունից։","🎬","AI Վիդեո","https://klingai.com/"],
-["OpusClip","Երկար տեսանյութերից կարճ հոլովակներ։","✂️","AI Վիդեո","https://www.opus.pro/"],
-
-["DALL·E","Տեքստից պատկերների ստեղծում։","🖼️","AI Նկարներ","https://openai.com/"],
-["Midjourney","Գեղարվեստական պատկերների գեներացում։","🌠","AI Նկարներ","https://www.midjourney.com/"],
-["Leonardo AI","Թվային արվեստ և դիզայն։","🎭","AI Նկարներ","https://leonardo.ai/"],
-["Stable Diffusion","Պատկերների գեներացման բաց էկոհամակարգ։","🖌️","AI Նկարներ","https://stability.ai/"],
-["Adobe Firefly","ԱԲ գործիքներ պատկերների և դիզայնի համար։","🎨","AI Նկարներ","https://firefly.adobe.com/"],
-
-["ElevenLabs","Տեքստի բնական հնչողությամբ խոսքի փոխակերպում։","🗣️","Ձայն և խոսք","https://elevenlabs.io/"],
-["PlayHT","ԱԲ ձայն և խոսքի սինթեզ։","🎧","Ձայն և խոսք","https://play.ht/"],
-["LOVO AI","Ձայնային ուղեկցման ստեղծում։","📣","Ձայն և խոսք","https://lovo.ai/"],
-["Suno","ԱԲ երաժշտության ստեղծում։","🎼","Ձայն և խոսք","https://suno.com/"],
-["AIVA","Երաժշտական ստեղծագործությունների գեներացում։","🎹","Ձայն և խոսք","https://www.aiva.ai/"],
-
-["GitHub Copilot","Ծրագրավորման կոդի առաջարկություններ։","💻","Խաղերի AI","https://github.com/features/copilot"],
-["Windsurf","Ծրագրավորման ԱԲ օգնական։","⚙️","Խաղերի AI","https://windsurf.com/"],
-["Unity","Խաղերի և 3D միջավայրերի ստեղծում։","🎮","Խաղերի AI","https://unity.com/"],
-["Unreal Engine","Խաղային և 3D գրաֆիկա։","🕹️","Խաղերի AI","https://www.unrealengine.com/"],
-["Unity ML-Agents","Մեքենայական ուսուցում խաղային միջավայրերում։","🤖","Խաղերի AI","https://github.com/Unity-Technologies/ml-agents"],
-
-["DeepMind","Առողջապահության ոլորտում ԱԲ հետազոտություններ։","🧬","Բժշկական AI","https://deepmind.google/"],
-["IBM Research","Առողջապահության ԱԲ հետազոտություններ։","🩺","Բժշկական AI","https://www.ibm.com/think/topics/healthcare-ai"]
-];
-
-let active="Բոլորը";
-
-function renderCategories(){
- document.getElementById("categories").innerHTML=groups.map(g=>
- `<button class="chip ${g===active?"active":""}" onclick="selectCategory('${g}')">${g}</button>`
- ).join("");
+function openTool(url) {
+    window.open(url, '_blank', 'noopener,noreferrer');
 }
 
-function selectCategory(g){
- active=g;
- renderCategories();
- renderTools();
-}
+function filterTools() {
+    const input = document.getElementById('searchBox').value
+        .toLowerCase()
+        .trim();
 
-function renderTools(){
- const q=document.getElementById("search").value.toLowerCase().trim();
- const list=tools.filter(t=>
- (active==="Բոլորը"||t[3]===active)&&
- (t.join(" ").toLowerCase().includes(q))
- );
- document.getElementById("grid").innerHTML=list.length?
- list.map(t=>`
- <article class="card">
-  <div class="card-icon">${t[2]}</div>
-  <h3>${t[0]}</h3>
-  <p>${t[1]}</p>
-  <div class="card-footer">
-   <span class="tag">${t[3]}</span>
-   <a class="open" href="${t[4]}" target="_blank" rel="noopener noreferrer">Բացել ↗</a>
-  </div>
- </article>`).join("")
- :'<div class="empty">Այս որոնմամբ գործիք չգտնվեց։</div>';
-}
+    const categories = document.querySelectorAll('.category');
+    let totalVisible = 0;
 
-function clearSearch(){
- document.getElementById("search").value="";
- active="Բոլորը";
- renderCategories();
- renderTools();
-}
+    categories.forEach(category => {
+        const cards = category.querySelectorAll('.card');
+        let visibleInCategory = 0;
 
-function makeQR(){
- const url=location.href;
- window.open(
- "https://api.qrserver.com/v1/create-qr-code/?size=300x300&data="+encodeURIComponent(url),
- "_blank"
- );
-}
+        cards.forEach(card => {
+            const text = card.innerText.toLowerCase();
 
-document.getElementById("search").addEventListener("input",renderTools);
-document.getElementById("count").textContent=tools.length+"+";
-renderCategories();
-renderTools();
+            if (text.includes(input)) {
+                card.style.display = 'block';
+                visibleInCategory++;
+                totalVisible++;
+            } else {
+                card.style.display = 'none';
+            }
+        });
+
+        category.style.display =
+            visibleInCategory > 0 ? 'block' : 'none';
+    });
+
+    document.getElementById('noResults').style.display =
+        totalVisible === 0 ? 'block' : 'none';
+}
 </script>
+
 </body>
 </html>
