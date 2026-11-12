@@ -1,0 +1,295 @@
+
+<!DOCTYPE html>
+<html lang="hy">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Tools Hub | ԱԲ գործիքների հարթակ</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Armenian:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#090d1d;
+  --panel:#141d34;
+  --line:rgba(180,190,255,.15);
+  --text:#f5f6ff;
+  --muted:#9daac8;
+  --purple:#8c75ff;
+  --cyan:#53d8e8;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+ margin:0;
+ background:radial-gradient(ellipse at 10% 0%,#5541a833,transparent 35%),var(--bg);
+ color:var(--text);
+ font-family:'Noto Sans Armenian',sans-serif;
+}
+a{text-decoration:none;color:inherit}
+.container{width:min(1150px,92%);margin:auto}
+header{
+ position:sticky;top:0;z-index:10;
+ background:#090d1deF;
+ backdrop-filter:blur(18px);
+ border-bottom:1px solid var(--line);
+}
+nav{
+ height:75px;display:flex;
+ align-items:center;justify-content:space-between;
+ gap:15px;
+}
+.logo{display:flex;align-items:center;gap:12px;font-weight:800}
+.logo-icon{
+ width:43px;height:43px;border-radius:14px;
+ display:grid;place-items:center;
+ background:linear-gradient(135deg,var(--purple),var(--cyan));
+ font-size:24px;
+}
+.logo small{display:block;color:var(--muted);font-size:10px}
+.navlinks{display:flex;gap:25px;color:var(--muted);font-size:13px}
+.navlinks a:hover{color:white}
+.btn{
+ padding:11px 17px;border:1px solid var(--line);
+ border-radius:12px;background:#ffffff0a;
+ color:white;cursor:pointer;font:inherit;font-size:12px;
+}
+.primary{background:linear-gradient(110deg,#8069f8,#45bfd6);border:0}
+.hero{text-align:center;padding:85px 0 45px}
+.eyebrow{
+ display:inline-block;padding:9px 15px;
+ border:1px solid #8c75ff55;border-radius:30px;
+ color:#c8bdff;background:#8c75ff15;font-size:12px;
+}
+h1{font-size:clamp(36px,6vw,65px);line-height:1.15;margin:25px 0 15px}
+h1 span{
+ background:linear-gradient(90deg,#b6a8ff,#5cdeeb);
+ -webkit-background-clip:text;color:transparent;
+}
+.hero p{color:var(--muted);max-width:650px;margin:0 auto;line-height:1.9}
+.search{
+ display:flex;max-width:650px;margin:30px auto;
+ padding:8px 10px 8px 18px;
+ background:var(--panel);border:1px solid var(--line);
+ border-radius:15px;gap:10px;
+}
+.search input{
+ flex:1;min-width:0;background:none;border:0;
+ outline:0;color:white;font:inherit;
+}
+.search button{border:0;border-radius:10px;padding:10px 15px}
+.stats{display:flex;justify-content:center;gap:40px;color:var(--muted);font-size:12px}
+.stats strong{display:block;color:white;font-size:19px}
+.section{padding:35px 0}
+.section h2{font-size:25px}
+.section-desc{color:var(--muted);font-size:13px}
+.categories{display:flex;flex-wrap:wrap;gap:10px;margin:25px 0}
+.chip{
+ padding:10px 15px;border:1px solid var(--line);
+ background:#ffffff08;color:var(--muted);
+ border-radius:30px;cursor:pointer;font:inherit;font-size:12px;
+}
+.chip.active,.chip:hover{background:#8c75ff30;color:white;border-color:var(--purple)}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:17px}
+.card{
+ background:linear-gradient(145deg,#19233d,#10182b);
+ border:1px solid var(--line);border-radius:20px;
+ padding:21px;transition:.25s;
+ display:flex;flex-direction:column;min-height:185px;
+}
+.card:hover{transform:translateY(-5px);border-color:#927dff;box-shadow:0 15px 35px #0005}
+.card-icon{
+ width:45px;height:45px;border-radius:14px;
+ background:#8c75ff20;display:grid;place-items:center;font-size:24px;
+}
+.card h3{margin:15px 0 7px;font-size:17px}
+.card p{color:var(--muted);font-size:12px;line-height:1.7;margin:0 0 15px}
+.card-footer{margin-top:auto;display:flex;justify-content:space-between;align-items:center}
+.tag{font-size:10px;color:#b9adff}
+.open{font-size:12px;color:#a99aff;font-weight:700}
+.empty{grid-column:1/-1;text-align:center;padding:35px;color:var(--muted)}
+.cta{
+ margin:60px 0;padding:30px;border-radius:22px;
+ border:1px solid #8c75ff55;
+ background:linear-gradient(110deg,#8069f825,#53d8e815);
+}
+.cta h2{margin-top:0}
+.cta p{color:var(--muted);font-size:13px}
+footer{border-top:1px solid var(--line);padding:27px 0;color:var(--muted);font-size:12px;text-align:center}
+@media(max-width:850px){
+ .grid{grid-template-columns:repeat(2,1fr)}
+ .navlinks{display:none}
+}
+@media(max-width:550px){
+ .grid{grid-template-columns:1fr}
+ .hero{padding-top:55px}
+ .stats{gap:20px}
+ nav{height:65px}
+ .search{padding-left:12px}
+ .search button{padding:9px}
+}
+</style>
+</head>
+<body>
+
+<header>
+ <nav class="container">
+  <a class="logo" href="#">
+   <span class="logo-icon">✦</span>
+   <span>AI TOOLS HUB<small>DISCOVER • CREATE • LEARN</small></span>
+  </a>
+  <div class="navlinks">
+   <a href="#tools">Գործիքներ</a>
+   <a href="#categories">Բաժիններ</a>
+   <a href="#about">Մեր մասին</a>
+  </div>
+  <button class="btn primary" onclick="makeQR()">▦ QR Կոդ</button>
+ </nav>
+</header>
+
+<main>
+<section class="hero container">
+ <div class="eyebrow">✦ Արհեստական բանականության աշխարհը՝ մեկ տեղում</div>
+ <h1>Գաղափարից մինչև արդյունք՝<br><span>AI-ի օգնությամբ</span></h1>
+ <p>
+ Բացահայտիր ժամանակակից արհեստական բանականության գործիքները,
+ ընտրիր քեզ անհրաժեշտը և ստեղծիր ավելին՝ ավելի արագ ու ստեղծագործաբար։
+ </p>
+ <div class="search">
+  <input id="search" type="search" placeholder="Փնտրիր գործիք կամ բաժին...">
+  <button class="btn primary" onclick="clearSearch()">Մաքրել</button>
+ </div>
+ <div class="stats">
+  <div><strong id="count">35+</strong>Գործիքներ</div>
+  <div><strong>7</strong>Ուղղություններ</div>
+  <div><strong>24/7</strong>Հասանելիություն</div>
+ </div>
+</section>
+
+<section class="section container" id="tools">
+ <h2>Բացահայտիր գործիքները</h2>
+ <p class="section-desc">Ընտրիր ուղղությունը և գտիր քեզ համապատասխան ԱԲ գործիքը։</p>
+ <div class="categories" id="categories"></div>
+ <div class="grid" id="grid"></div>
+</section>
+
+<section class="container" id="about">
+ <div class="cta">
+  <h2>Սովորի՛ր, փորձարկի՛ր, ստեղծի՛ր</h2>
+  <p>Օգտագործիր արհեստական բանականությունը որպես ստեղծագործական օգնական։</p>
+  <a href="#tools" class="btn primary">Դիտել գործիքները ↗</a>
+ </div>
+</section>
+</main>
+
+<footer>
+ <div class="container">
+  <strong>AI TOOLS HUB</strong> · ԱԲ գործիքների հարթակ
+  <br><br>
+  Նախագծային աշխատանք · Վարդան Բախշյանի անվան թիվ 2 հիմնական դպրոց
+ </div>
+</footer>
+
+<script>
+const groups=[
+"Բոլորը","AI Օգնականներ","AI Սահիկաշար","AI Վիդեո",
+"AI Նկարներ","Ձայն և խոսք","Խաղերի AI","Բժշկական AI"
+];
+
+const tools=[
+["ChatGPT","Խելացի պատասխաններ, գաղափարներ և ծրագրավորման օգնություն։","🧠","AI Օգնականներ","https://chatgpt.com/"],
+["Gemini","Google-ի արհեստական բանականության օգնական։","✨","AI Օգնականներ","https://gemini.google.com/"],
+["Claude","Տեքստերի վերլուծություն և գրավոր աշխատանք։","📘","AI Օգնականներ","https://claude.ai/"],
+["Grok","Հարցերի ուսումնասիրություն և գաղափարներ։","⚡","AI Օգնականներ","https://grok.com/"],
+["Perplexity","ԱԲ որոնում՝ աղբյուրներով և պատասխաններով։","🔎","AI Օգնականներ","https://www.perplexity.ai/"],
+["Notion AI","Նշումներ և աշխատանքների կազմակերպում։","📝","AI Օգնականներ","https://www.notion.so/product/ai"],
+["Writesonic","Տեքստերի և բովանդակության ստեղծում։","✍️","AI Օգնականներ","https://writesonic.com/"],
+["Jasper AI","Մարքեթինգային տեքստերի ստեղծում։","📢","AI Օգնականներ","https://www.jasper.ai/"],
+
+["Gamma AI","Ներկայացումների արագ ձևավորում։","📚","AI Սահիկաշար","https://gamma.app/"],
+["Tome","Պատմողական ներկայացումների ստեղծում։","🖥️","AI Սահիկաշար","https://tome.app/"],
+["Canva AI","Դիզայն և սահիկաշարեր։","🎨","AI Սահիկաշար","https://www.canva.com/"],
+
+["Sora","Տեքստից տեսանյութերի ստեղծում։","🎥","AI Վիդեո","https://sora.com/"],
+["Runway","ԱԲ վիդեո ստեղծում և խմբագրում։","📹","AI Վիդեո","https://runwayml.com/"],
+["Pika","Կարճ տեսանյութերի և անիմացիաների ստեղծում։","⚡","AI Վիդեո","https://pika.art/"],
+["Veo","Google-ի տեսանյութերի գեներացման մոդել։","🎞️","AI Վիդեո","https://deepmind.google/models/veo/"],
+["Kling AI","Տեսանյութերի ստեղծում՝ նկարագրությունից։","🎬","AI Վիդեո","https://klingai.com/"],
+["OpusClip","Երկար տեսանյութերից կարճ հոլովակներ։","✂️","AI Վիդեո","https://www.opus.pro/"],
+
+["DALL·E","Տեքստից պատկերների ստեղծում։","🖼️","AI Նկարներ","https://openai.com/"],
+["Midjourney","Գեղարվեստական պատկերների գեներացում։","🌠","AI Նկարներ","https://www.midjourney.com/"],
+["Leonardo AI","Թվային արվեստ և դիզայն։","🎭","AI Նկարներ","https://leonardo.ai/"],
+["Stable Diffusion","Պատկերների գեներացման բաց էկոհամակարգ։","🖌️","AI Նկարներ","https://stability.ai/"],
+["Adobe Firefly","ԱԲ գործիքներ պատկերների և դիզայնի համար։","🎨","AI Նկարներ","https://firefly.adobe.com/"],
+
+["ElevenLabs","Տեքստի բնական հնչողությամբ խոսքի փոխակերպում։","🗣️","Ձայն և խոսք","https://elevenlabs.io/"],
+["PlayHT","ԱԲ ձայն և խոսքի սինթեզ։","🎧","Ձայն և խոսք","https://play.ht/"],
+["LOVO AI","Ձայնային ուղեկցման ստեղծում։","📣","Ձայն և խոսք","https://lovo.ai/"],
+["Suno","ԱԲ երաժշտության ստեղծում։","🎼","Ձայն և խոսք","https://suno.com/"],
+["AIVA","Երաժշտական ստեղծագործությունների գեներացում։","🎹","Ձայն և խոսք","https://www.aiva.ai/"],
+
+["GitHub Copilot","Ծրագրավորման կոդի առաջարկություններ։","💻","Խաղերի AI","https://github.com/features/copilot"],
+["Windsurf","Ծրագրավորման ԱԲ օգնական։","⚙️","Խաղերի AI","https://windsurf.com/"],
+["Unity","Խաղերի և 3D միջավայրերի ստեղծում։","🎮","Խաղերի AI","https://unity.com/"],
+["Unreal Engine","Խաղային և 3D գրաֆիկա։","🕹️","Խաղերի AI","https://www.unrealengine.com/"],
+["Unity ML-Agents","Մեքենայական ուսուցում խաղային միջավայրերում։","🤖","Խաղերի AI","https://github.com/Unity-Technologies/ml-agents"],
+
+["DeepMind","Առողջապահության ոլորտում ԱԲ հետազոտություններ։","🧬","Բժշկական AI","https://deepmind.google/"],
+["IBM Research","Առողջապահության ԱԲ հետազոտություններ։","🩺","Բժշկական AI","https://www.ibm.com/think/topics/healthcare-ai"]
+];
+
+let active="Բոլորը";
+
+function renderCategories(){
+ document.getElementById("categories").innerHTML=groups.map(g=>
+ `<button class="chip ${g===active?"active":""}" onclick="selectCategory('${g}')">${g}</button>`
+ ).join("");
+}
+
+function selectCategory(g){
+ active=g;
+ renderCategories();
+ renderTools();
+}
+
+function renderTools(){
+ const q=document.getElementById("search").value.toLowerCase().trim();
+ const list=tools.filter(t=>
+ (active==="Բոլորը"||t[3]===active)&&
+ (t.join(" ").toLowerCase().includes(q))
+ );
+ document.getElementById("grid").innerHTML=list.length?
+ list.map(t=>`
+ <article class="card">
+  <div class="card-icon">${t[2]}</div>
+  <h3>${t[0]}</h3>
+  <p>${t[1]}</p>
+  <div class="card-footer">
+   <span class="tag">${t[3]}</span>
+   <a class="open" href="${t[4]}" target="_blank" rel="noopener noreferrer">Բացել ↗</a>
+  </div>
+ </article>`).join("")
+ :'<div class="empty">Այս որոնմամբ գործիք չգտնվեց։</div>';
+}
+
+function clearSearch(){
+ document.getElementById("search").value="";
+ active="Բոլորը";
+ renderCategories();
+ renderTools();
+}
+
+function makeQR(){
+ const url=location.href;
+ window.open(
+ "https://api.qrserver.com/v1/create-qr-code/?size=300x300&data="+encodeURIComponent(url),
+ "_blank"
+ );
+}
+
+document.getElementById("search").addEventListener("input",renderTools);
+document.getElementById("count").textContent=tools.length+"+";
+renderCategories();
+renderTools();
+</script>
+</body>
+</html>
